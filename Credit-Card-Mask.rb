@@ -5,22 +5,22 @@ class Mask
   attr_reader :rawstring, :newstring
   def initialize(string)
     @rawstring = string
+    @tempstring = string
     @newstring = encrypt
   end
 
   def encrypt
-    # binding.pry
-    num = ((rawstring.length)-4)
+    num = ((@tempstring.length)-4)
     obscuredcharacters = ""
     num.times {obscuredcharacters << "#"}
-    tempstring = rawstring
-    tempstring[0...-4] = obscuredcharacters
-    tempstring
+    @tempstring[0...-4] = obscuredcharacters
+    @tempstring
   end
 
 end
 
 mask = Mask.new("billy is great helping me 1234")
 
-puts mask.rawstring
+# binding.pry
+
 puts mask.newstring
